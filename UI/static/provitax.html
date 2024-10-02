@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProviTax - AI Chat Assistant</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f7fa;
+            height: 100%;
+        }
+
+        #app-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        #app {
+            display: flex;
+            flex-direction: column;
+            height: 90vh;
+            width: 70%;
+            max-width: 800px;
+            background: #ffffff;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        header {
+            background-color: #0056b3;
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        #chat-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background: #e9ecef;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        #chat-box {
+            display: flex;
+            flex-direction: column;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .message {
+            padding: 10px 15px;
+            margin: 10px 0;
+            border-radius: 15px;
+            max-width: 60%;
+            word-wrap: break-word;
+        }
+
+        .user-message {
+            background-color: #007bff;
+            color: white;
+            align-self: flex-end;
+        }
+
+        .bot-message {
+            background-color: #f1f1f1;
+            color: black;
+            align-self: flex-start;
+        }
+
+        #input-container {
+            display: flex;
+            padding: 10px 20px;
+            border-top: 1px solid #ccc;
+            background-color: #fff;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        #user-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        #send-btn {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #send-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div id="app-container">
+        <div id="app">
+            <!-- Header -->
+            <header>
+                <div class="logo">
+                    <img src="provitaxlogo.png" alt="ProviTax Logo" onerror="this.style.display='none'">
+                    <h1>ProviTax</h1>
+                </div>
+            </header>
+
+            <!-- Chat Container -->
+            <div id="chat-container">
+                <div id="chat-box"></div>
+            </div>
+
+            <!-- Input Container -->
+            <div id="input-container">
+                <input type="text" id="user-input" placeholder="Ask me anything...">
+                <button id="send-btn">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const sendButton = document.getElementById("send-btn");
+            const userInput = document.getElementById("user-input");
+            const chatBox = document.getElementById("chat-box");
+
+            // Function to append messages to chat
+            function appendMessage(message, sender) {
+                const messageElement = document.createElement("div");
+                messageElement.classList.add("message", sender === "user" ? "user-message" : "bot-message");
+                messageElement.textContent = message;
+                chatBox.appendChild(messageElement);
+                chatBox.scrollTop = chatBox.scrollHeight; // Scroll to bottom
+            }
+
+            // Simulate a bot response
+            function getBotResponse(userMessage) {
+                // Replace with API call to GenAI model
+                return `ProviTax: You said "${userMessage}". Hi I am ProviTax assistant to all your Tax Provision Application Related Problems`;
+            }
+
+            // Handle send button click
+            sendButton.addEventListener("click", () => {
+                const userMessage = userInput.value.trim();
+                if (userMessage) {
+                    appendMessage(userMessage, "user");
+                    const botResponse = getBotResponse(userMessage);
+                    setTimeout(() => appendMessage(botResponse, "bot"), 500); // Simulate response delay
+                    userInput.value = ""; // Clear input field
+                }
+            });
+
+            // Handle enter key press
+            userInput.addEventListener("keypress", (event) => {
+                if (event.key === "Enter") {
+                    sendButton.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
