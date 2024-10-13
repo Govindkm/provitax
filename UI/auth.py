@@ -17,6 +17,19 @@ def init_db():
             role TEXT
         )
     """)
+    
+    # Create chat_history table if it doesn't exist
+    c.execute("""
+        CREATE TABLE IF NOT EXISTS chat_history (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id TEXT,
+            chat_data TEXT,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (user_id) REFERENCES users(username)
+        )
+    """)
+    
     conn.commit()
     conn.close()
 
@@ -50,3 +63,19 @@ def user_exists(username):
     result = c.fetchone()
     conn.close()
     return result is not None
+
+# Function to add chat history for a user
+def add_chat_history(username, chat_data):
+    conn = sqlite3.connect("users.db")
+    c = conn.cursor()
+    c.execute("INSERT INTO chat_history (user_id, chat_data) VALUES (?, ?)", (username, chat_data))
+    conn.commit()
+    conn.close()   
+
+# Function to update chat history for a user
+def update_chat_history(chat_id, chat_data):
+    conn = sqlite3.connect("users.db")
+    c = conn.cursor()
+    c.execute("UPDATE chat_history SET chat_data=?, updated_at=CURRENT_TIMESTAMP WHERE id=?", (chat_data, chat_id))
+    conn.commit()
+    conn.close()
