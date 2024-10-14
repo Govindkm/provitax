@@ -1,7 +1,8 @@
 import streamlit as st
-from auth import init_db, add_user, validate_user, user_exists, add_chat_history, update_chat_history
+from auth import init_db, add_user, validate_user, user_exists, add_chat_history, update_chat_history, get_chat_history, get_chat_by_id
 from PIL import Image
 import json
+import requests
 
 # Set the theme
 st.set_page_config(
@@ -98,18 +99,33 @@ def handle_user_input():
         # Display chatbot's response
         st.chat_message("assistant").markdown(response)
 
-# Placeholder function to generate chatbot response (replace with model call)
+
+
 def generate_response(prompt):
-    # You can replace this with an actual chatbot model's response
-    response_metadata = [
-        {"info": "Reference 1", "url": "https://example.com/reference1"},
-        {"info": "Reference 2", "url": "https://example.com/reference2"}
-    ]
-    return {"message": f"This is a placeholder response to the message: {prompt}", "metadata": response_metadata}
+        url = "http://127.0.0.1:8000/rag/rag-query"
+        payload = {
+            "user_type": st.session_state.role,
+            "query": prompt
+        }
+        headers = {
+            "Content-Type": "application/json"
+        }
+        response = requests.post(url, json=payload, headers=headers)
+        
+        if response.status_code == 200:
+            response_data = response.json()
+            return {
+                "message": response_data.get("response", "No response message received.")
+            }
+        else:
+            return {
+                "message": "Error: Unable to get response from the server.",
+                "metadata": []
+            }
 
 # Create a function to display the main application after login
 def main_app():
-    st.title(f"Welcome to ProvitaxAI")
+    st.title(f"Welcome to ProviTaxAI")
     st.text("Revolutionizing Tax Provision Support")
 
     # Display different options based on user role
@@ -163,6 +179,7 @@ logo_path = "C:\\Users\\GOVIN\\Desktop\\provitax\\UI\\static\\provitaxlogo.png" 
 if logo_path:
     logo = Image.open(logo_path)
     st.sidebar.image(logo, width=150)
+
 page = st.sidebar.selectbox("Choose a page", ["Login", "Register", "Home", "FAQ"])
 
 if page == "Login":

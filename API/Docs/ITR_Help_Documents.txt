@@ -1,0 +1,90 @@
+Support User Guide for ITR Creation and Managing Tools for TaxProvision Application
+As a support user for the TaxProvision application, you play a critical role in maintaining the system's health and ensuring that Income Tax Reports (ITRs) are generated smoothly. Here’s how to handle key administrative tasks:
+
+1. Running Database Scripts
+Database scripts may need to be run to perform specific updates or cleanup tasks in the TaxProvision database. Follow these steps:
+
+Step 1: Access the database through the SQL client (e.g., Oracle SQL Developer, pgAdmin, or any relevant tool for your DB).
+Step 2: Choose the appropriate schema for your task. Be cautious to ensure you are working in the correct environment (e.g., production, staging, or development).
+Step 3: Load the script for the required operation, whether it’s updating records, fixing data discrepancies, or generating tax data.
+Example: Run update_provisions.sql for updating tax provisions data.
+Step 4: Execute the script and monitor the execution logs for any errors or warnings.
+Step 5: Verify that the script has run successfully by checking the affected tables or records.
+
+
+2. Updating Database Schemas
+When there are new features or changes in the tax regulations, you may need to update the database schemas. This task ensures that new fields, tables, or constraints are in place.
+
+Step 1: Review the schema change request and validate if it's necessary for the current ITR process.
+Step 2: Create a backup of the current database schema before making any changes.
+Step 3: Apply schema changes by running the alter or update SQL scripts.
+Example: ALTER TABLE provisions ADD COLUMN new_tax_rate DOUBLE;
+Step 4: Confirm that the schema has been updated successfully by querying the structure of the updated tables.
+Step 5: Test the application to ensure that the changes do not break any existing functionalities.
+
+
+3. Killing Long-pending Jobs
+Occasionally, jobs in the database may hang or run indefinitely, causing performance issues. Here’s how to kill long-pending jobs safely:
+
+Step 1: Identify the long-running job by running a query to check active processes or background jobs in the database.
+Example Query: SELECT * FROM DBA_JOBS_RUNNING WHERE DURATION > 10000;
+Step 2: Take note of the job's session ID or process ID (PID).
+Step 3: Terminate the job using the appropriate kill command.
+Oracle: ALTER SYSTEM KILL SESSION 'sid,serial#';
+PostgreSQL: SELECT pg_terminate_backend(PID);
+Step 4: Confirm the job has been terminated and ensure no other processes were affected.
+
+
+4. Clearing Data from a Table
+You may need to clear or reset data from specific tables, such as temporary logs or failed jobs, to ensure that the system runs efficiently.
+
+Step 1: Identify the table that needs to be cleared, such as temp_provision_data, job_logs, or stale_sessions.
+Step 2: Ensure that clearing the table will not disrupt any active processes. It’s best to do this during non-peak hours.
+Step 3: Run a delete or truncate command to clear the table:
+DELETE FROM temp_provision_data WHERE status = 'failed';
+TRUNCATE TABLE job_logs;
+Step 4: Verify that the data has been cleared and ensure there are no dependencies impacted by this action.
+Step 5: Restart any services that may depend on the cleaned-up table if necessary.
+
+
+5. Monitoring and Troubleshooting ITR Creation Jobs
+Creating ITRs is a core feature of the TaxProvision app. If users face issues, you may need to monitor or troubleshoot the job queues that generate these reports.
+
+Step 1: Check the status of the ITR generation jobs by querying the job queue:
+Example Query: SELECT * FROM ITR_JOBS WHERE STATUS = 'running';
+Step 2: If a job is stuck, attempt to resubmit it or kill and restart the job.
+UPDATE ITR_JOBS SET STATUS = 'queued' WHERE JOB_ID = 123;
+Step 3: Check the application logs for any error messages related to the job.
+Step 4: Review the relevant tables (e.g., itr_results, job_status) to ensure that the ITR has been generated correctly.
+
+
+6. Backups and Restorations
+Ensure that regular backups are made of the database, especially before running any critical operations like schema changes or data deletions.
+
+Step 1: Trigger the backup job via the scheduling tool (e.g., Jenkins, or manually via DB client).
+Step 2: Verify that backups have completed successfully and are stored in the appropriate backup location.
+Step 3: If a rollback is required, use the latest backup to restore the database.
+Example: RESTORE DATABASE taxprovision FROM backup_20241013;
+7. Using Admin Tools and Automated Scripts
+For routine operations such as job monitoring, schema updates, or table truncations, you can use the pre-built admin tools:
+
+Tool 1: Job Monitor
+Allows you to monitor and terminate long-running jobs.
+Tool 2: Schema Updater
+A script-driven tool for applying schema updates without manual intervention.
+Tool 3: Data Cleaner
+A utility to clear stale data from tables.
+These tools are available in the Admin Console of the TaxProvision application.
+
+
+8. Reporting Issues and Escalation
+If you encounter any issues during these tasks that cannot be resolved, escalate them to the development team:
+
+Step 1: Collect all relevant logs, error messages, and job statuses.
+Step 2: Open a support ticket in the internal tracking system and describe the issue in detail.
+Step 3: Attach logs and mention any actions taken to resolve the issue.
+This guide should assist you in efficiently managing the tools and processes required for ITR creation and the maintenance of the TaxProvision application.
+
+
+For further assistance, please reach out to the TaxProvision DevOps Team.
+

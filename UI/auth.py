@@ -79,3 +79,21 @@ def update_chat_history(chat_id, chat_data):
     c.execute("UPDATE chat_history SET chat_data=?, updated_at=CURRENT_TIMESTAMP WHERE id=?", (chat_data, chat_id))
     conn.commit()
     conn.close()
+    
+# Function to get chat history for a user
+def get_chat_history(username):
+    conn = sqlite3.connect("users.db")
+    c = conn.cursor()
+    c.execute("SELECT id, chat_data, created_at, updated_at FROM chat_history WHERE user_id=?", (username,))
+    result = c.fetchall()
+    conn.close()
+    return result
+
+# Function to get chat history by chat id
+def get_chat_by_id(chat_id):
+    conn = sqlite3.connect("users.db")
+    c = conn.cursor()
+    c.execute("SELECT chat_data FROM chat_history WHERE id=?", (chat_id,))
+    result = c.fetchone()
+    conn.close()
+    return result[0] if result else None

@@ -1,0 +1,93 @@
+What is a tax provision? A tax provision is the estimated amount of income tax that a
+company is legally expected to pay to the IRS for the current year. It is just one type of
+provision that corporate finance departments set aside to cover a probable future expense.
+Other types of provisions a business typically accounts for include bad debts, depreciation,
+product warranties, pensions, and sales allowances.
+Tax provisions are considered current tax liabilities for the purpose of accounting because
+they are amounts earmarked for taxes to be paid in the current year. Although the basic
+definition sounds simple, what’s not always simple is how to prepare for tax provision
+calculation in a way that is best for the business while being fast, accurate, and
+defendable. Estimating each year’s tax provision is not a menial task and can require a
+great deal of time and effort for corporate tax departments.
+How to calculate provision for income tax
+A company’s tax provision has two parts: current income tax expense and deferred income
+tax expense. To make things more complicated, most accounting departments use
+Generally Accepted Accounting Principles (GAAP) to calculate their financial position.
+GAAP procedures differ in important ways from income tax accounting rules. These
+differences play a major role in the calculation of current and deferred income tax expenses.
+Current income tax expense
+The current tax expense is the amount of income tax a company will pay for the current year.
+It is calculated from current earnings and the current year’s permanent differences and
+temporary differences between the GAAP and income tax rules. The following steps outline
+how you calculate current income tax provision:
+1. Start with your company’s net income. This is your income as calculated by GAAP rules
+before income taxes.
+2. Calculate the current year’s permanent differences. These are income items or
+expenses that are not allowed for income tax purposes but that are allowed for GAAP.
+Because these expenses or income items are disallowed or not recognized for income tax
+purposes, they are considered permanent. Examples of permanent differences include
+fines and penalties, entertainment expenses, municipal bond interest, and life insurance
+proceeds.
+3. Calculate the current year’s temporary differences. These are expenses or income items
+that are allowed for either GAAP or income tax purposes in one year, but not under the
+other accounting system until a later year. Determine your company’s temporary
+differences by reviewing the current year balance sheet and identifying differences
+between your GAAP calculations and your income tax calculations. Common temporary
+differences include expenses incurred but not yet paid, and depreciation.
+4. Apply credits and net operating losses (NOL). After you have accounted for these
+differences, you land on your current year taxable income. You can now apply credits and
+NOL.
+5. Apply the current tax rate. Multiply the current year taxable income by your current
+statutory federal tax rate. The result is your company’s current year tax expense for the
+income tax provision.
+Deferred income tax expense
+The deferred income tax is a liability that the company has on its balance sheet but that is
+not due for payment yet. This more complicated part of the income tax provision calculates a
+cumulative total of the temporary differences and applies the appropriate tax rate to that
+total. It focuses on the deferred effects of income, expenses, NOL, and tax credits. After this
+calculation, you’ll account for your deferred tax expense on your company’s GAAP balance
+sheet as an asset or liability depending on whether you will owe tax or will receive a tax
+benefit in the future.
+Income tax provision calculation challenges
+Calculating tax provision is complex and challenging. Corporate tax teams face the
+following common tax provision calculation issues.
+Out-of-sync income reporting. Getting your calculation right requires starting with the
+right number for your net income. Most companies report income annually or quarterly,
+so the tax provision amount can only be estimated.
+Difficulty gathering and integrating the right data. Bringing together data for your
+calculation from the finance and tax departments, as well as integrating and properly
+structuring it, is complicated.
+Handling a large volume of data. Even the simplest calculation can require a team of tax
+experts to examine items such as annual reports, financial statements, tax payments, and
+net income.
+Keeping up with tax law changes. Tax law changes affect your calculation formulas.
+Your tax department must stay on top of these new regulatory requirements.
+Reliance on manual calculation processes. Calculating the corporate tax provision using
+spreadsheets and manual processes can slow down your ability to get accurate,
+compliant data in a timely manner.
+4 steps to improve your tax provision calculation process
+and results
+With the right approach, your tax department can get better, faster tax provisioning results,
+reduce your tax provision obligations, and reduce errors and risks in tax provisioning. Here
+are the steps to consider:
+1. Harness and analyze your data. Collecting and consolidating the right data makes tax
+provision calculations much more accurate.
+2. Consult tax provision checklists. Use tools such as the industry-leading Thomson
+Reuters Corporate Income Tax Provision Checklists to assess income tax measurement
+processes, disclosure requirements, and risk management controls.
+3. Review your compliance. Look closely at your tax provision calculation process to verify
+that you are using the right criteria to calculate tax provision.
+4. Opt for automation. Those processes that are laborious or error-prone can be improved
+with a tax provisioning solution that delivers faster, more accurate data collection,
+consolidation, and analysis.
+How tax provision software can help
+Corporate tax provision software incorporates automation and other technologies that can
+speed your tax provisioning calculation in several ways. The right tax provision software
+helps eliminate errors and streamline your tax calculation processes so you can complete
+filing obligations easily. Tax provision software delivers the tools to help you respond to
+regulatory changes around the world in nearly any jurisdiction. Tax departments are
+reporting up to 50% faster processing with some tax provision software, along with other
+improved results.
+Tax provision software such as Thomson Reuters ONESOURCE™ Tax Provision gives your
+organization the ability to balance compliance needs with accurate tax provisioning while
+ensuring a defendable process.
